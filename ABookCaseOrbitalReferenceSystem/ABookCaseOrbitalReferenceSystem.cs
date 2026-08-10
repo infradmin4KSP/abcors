@@ -71,7 +71,7 @@ namespace ABCORS
             string AngleUnit = "\u00B0";
             if (HighLogic.CurrentGame.Parameters.CustomParams<ABCORSSettings>().showTime)
             {
-                labelText += Time + KSPUtil.PrintTime((int)(Planetarium.GetUniversalTime() - _hitUT), 5, true) + "\n";
+                labelText += Time + System.Text.RegularExpressions.Regex.Replace(KSPUtil.PrintTime((int)(Planetarium.GetUniversalTime() - _hitUT), 5, true), @"(\d+)(\p{L})", "$1 $2") + "\n";
             }
             if (HighLogic.CurrentGame.Parameters.CustomParams<ABCORSSettings>().showAltitude)
             {
